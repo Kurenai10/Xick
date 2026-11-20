@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Xick" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/kick_green</item>
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:statusBarColor">@color/background</item>
+        <item name="android:navigationBarColor">@color/card_background</item>
+    </style>
+
+    <!-- Viewer-count / uptime chips drawn over a stream thumbnail. -->
+    <style name="OverlayText">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:background">@color/overlay_scrim</item>
+        <item name="android:paddingHorizontal">8dp</item>
+        <item name="android:paddingVertical">3dp</item>
+    </style>
+</resources>

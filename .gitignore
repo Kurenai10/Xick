@@ -1,0 +1,18 @@
+# Build output and local tooling
+build/
+.gradle/
+.kotlin/
+.idea/
+*.iml
+.claude/
+
+# Local machine settings and secrets (never commit)
+local.properties
+*.jks
+*.keystore
+*.apk
+*.aab
+
+# OS
+.DS_Store
+Thumbs.db

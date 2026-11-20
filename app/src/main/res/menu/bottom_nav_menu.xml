@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/gamesFragment"
+        android:title="@string/nav_games"
+        android:icon="@drawable/ic_games" />
+    <item
+        android:id="@+id/browseFragment"
+        android:title="@string/nav_popular"
+        android:icon="@drawable/ic_trending" />
+    <item
+        android:id="@+id/followingFragment"
+        android:title="@string/nav_following"
+        android:icon="@drawable/ic_favorite" />
+    <item
+        android:id="@+id/savedFragment"
+        android:title="@string/nav_saved"
+        android:icon="@drawable/ic_profile" />
+</menu>

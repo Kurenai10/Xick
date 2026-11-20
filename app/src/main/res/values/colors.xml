@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="kick_green">#53FC18</color>
+    <color name="background">#16181D</color>
+    <color name="card_background">#20232A</color>
+    <color name="thumb_placeholder">#2A2D35</color>
+    <color name="overlay_scrim">#99000000</color>
+</resources>

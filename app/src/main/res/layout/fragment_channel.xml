@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- In fullscreen this becomes a horizontal row: player (weight 7) + chat panel (weight 3). -->
+    <LinearLayout
+        android:id="@+id/contentLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/playerContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/black">
+
+            <androidx.media3.ui.PlayerView
+                android:id="@+id/playerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:resize_mode="fit"
+                app:surface_type="texture_view"
+                app:use_controller="true"
+                app:show_buffering="when_playing"
+                app:controller_layout_id="@layout/player_controls" />
+        </FrameLayout>
+
+        <!-- Chat column (title + status + messages + input). In fullscreen it's
+             re-parented into the horizontal row as the 30% side panel. -->
+        <LinearLayout
+            android:id="@+id/chatColumn"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/titleText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="12dp"
+                android:paddingTop="8dp"
+                android:textStyle="bold"
+                android:maxLines="2"
+                android:ellipsize="end" />
+
+            <TextView
+                android:id="@+id/chatStatusText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="12dp"
+                android:paddingBottom="4dp"
+                android:textSize="12sp"
+                android:alpha="0.7" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/chatRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="6dp"
+                android:gravity="center_vertical">
+
+                <EditText
+                    android:id="@+id/messageInput"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:hint="@string/chat_input_hint"
+                    android:imeOptions="actionSend"
+                    android:inputType="textShortMessage"
+                    android:maxLength="500"
+                    android:textSize="14sp" />
+
+                <ImageButton
+                    android:id="@+id/sendButton"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="@string/send"
+                    android:src="@drawable/ic_send"
+                    app:tint="@color/kick_green" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

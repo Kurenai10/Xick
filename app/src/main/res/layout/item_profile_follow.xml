@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- One followed channel on the Profil tab: avatar, name, heart (unfollow). -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingHorizontal="8dp"
+    android:paddingVertical="8dp">
+
+    <ImageView
+        android:id="@+id/profileRowAvatar"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:background="#22262E"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/profileRowName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_weight="1"
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp" />
+
+    <ImageButton
+        android:id="@+id/profileRowHeart"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Takibi bırak"
+        android:padding="10dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_heart_filled" />
+</LinearLayout>

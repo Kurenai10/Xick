@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Player controller in the Xtra style, all sizes in dp.
+       topBar     : close (chevron) | channel name, stream title, game, viewers and uptime | follow, quality, more
+       centerRow  : play-pause only
+       bottomBar  : recording only: seek bar, time, jump
+       actionStrip: sleep, live | aspect, chat, fullscreen
+     Audio-only and go-to-start are in the more menu. Standard exo_* ids keep Media3 wiring. -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent">
+
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:background="@drawable/bg_top_scrim"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="4dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="24dp">
+
+        <ImageButton
+            android:id="@+id/btnClose"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Kapat"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_chevron_down" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingStart="4dp">
+
+            <TextView
+                android:id="@+id/playerChannelName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/playerTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textColor="#E6FFFFFF"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/playerCategory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textColor="#AAAAAA"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/streamInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:textColor="#CCFFFFFF"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/btnFollow"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Takip et"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_heart_outline" />
+
+        <ImageButton
+            android:id="@+id/btnQuality"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Kalite"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_settings" />
+
+        <ImageButton
+            android:id="@+id/btnMore"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Diğer seçenekler"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_more" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/centerRow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@id/exo_play_pause"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@drawable/bg_circle"
+            android:padding="18dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottomColumn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/bottomBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_bottom_scrim"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp"
+            android:paddingTop="24dp"
+            android:paddingBottom="0dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@id/exo_position"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+
+            <androidx.media3.ui.DefaultTimeBar
+                android:id="@id/exo_progress"
+                android:layout_width="0dp"
+                android:layout_height="28dp"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="8dp"
+                app:bar_height="4dp"
+                app:touch_target_height="28dp"
+                app:scrubber_enabled_size="14dp"
+                app:scrubber_disabled_size="0dp"
+                app:played_color="#53FC18"
+                app:scrubber_color="#53FC18"
+                app:buffered_color="#80FFFFFF"
+                app:unplayed_color="#33FFFFFF" />
+
+            <TextView
+                android:id="@id/exo_duration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+
+            <ImageButton
+                android:id="@+id/btnJump"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="2dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Dakikaya git"
+                android:padding="7dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_jump"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/actionStrip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_bottom_scrim"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="4dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="8dp">
+
+            <ImageButton
+                android:id="@+id/btnSleep"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Uyku zamanlayıcısı"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_sleep" />
+
+            <ImageButton
+                android:id="@+id/btnLive"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Canlıya dön"
+                android:padding="12dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_live" />
+
+            <ImageButton
+                android:id="@+id/btnAspect"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Sığdırma"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_aspect_ratio" />
+
+            <ImageButton
+                android:id="@+id/btnChatToggle"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Sohbet"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_chat" />
+
+            <ImageButton
+                android:id="@+id/btnFullscreen"
+                android:layout_width="0dp"
+                android:layout_height="44dp"
+                android:layout_weight="1"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Tam ekran"
+                android:padding="10dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_fullscreen" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

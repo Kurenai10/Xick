@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Xick</string>
+
+    <string name="nav_games">Oyunlar</string>
+    <string name="nav_popular">Popüler</string>
+    <string name="nav_following">Takip Edilenler</string>
+    <string name="nav_saved">Profil</string>
+
+    <string name="channel">Kanal</string>
+    <string name="loading">Yükleniyor…</string>
+
+    <string name="viewer_count_format">%s izleyici</string>
+    <string name="uptime_format">%s yayın süresi</string>
+
+    <string name="quality">Kalite</string>
+    <string name="quality_auto">Otomatik</string>
+    <string name="quality_not_ready">Kalite bilgisi henüz hazır değil</string>
+    <string name="resize_fit">Sığdır</string>
+    <string name="resize_zoom">Yakınlaştır</string>
+    <string name="resize_fill">Doldur</string>
+    <string name="channel_offline">Kanal çevrimdışı</string>
+    <string name="fullscreen">Tam ekran</string>
+    <string name="chat_toggle">Sohbeti aç/kapat</string>
+
+    <string name="chat_connecting">Sohbete bağlanıyor…</string>
+    <string name="chat_waiting">Sunucu bekleniyor…</string>
+    <string name="chat_connected">Sohbet bağlı</string>
+    <string name="chat_unavailable">Sohbet kullanılamıyor: %s</string>
+    <string name="chat_input_hint">Mesaj gönder…</string>
+    <string name="chat_input_sign_in">Mesaj göndermek için giriş yap</string>
+    <string name="send">Gönder</string>
+    <string name="send_failed">Mesaj gönderilemedi: %s</string>
+
+    <string name="please_sign_in">Takip edilenleri görmek için giriş yapmalısın</string>
+    <string name="sign_in">Giriş yap</string>
+    <string name="signed_in">Giriş yapıldı</string>
+    <string name="following_needs_endpoint">Giriş yapıldı, ama takip edilen yayın listesi endpoint\'i henüz doğrulanmadı</string>
+
+    <string name="saved_empty">Kaydedilmiş içerik yok</string>
+    <string name="search_hint">Ara</string>
+    <string name="filter">Filtrele</string>
+    <string name="filter_language">Dil seç</string>
+    <string name="lang_all">Tüm diller</string>
+    <string name="live_badge">CANLI</string>
+    <string name="category_badge">Kategori</string>
+    <string name="tab_videos">Videolar</string>
+    <string name="tab_clips">Klipler</string>
+    <string name="vod">Video</string>
+    <string name="clip">Klip</string>
+    <string name="vod_unavailable">Video oynatılamıyor</string>
+    <string name="watch_live">Canlı izle</string>
+    <string name="views_format">%s izlenme</string>
+    <string name="followers_format">%s takipçi</string>
+</resources>
