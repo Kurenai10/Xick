@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="200" viewBox="0 0 640 200" role="img" aria-label="Xick logo">
+  <g transform="translate(20 20)">
+    <rect width="160" height="160" rx="36" fill="#0F1115"/>
+    <rect x="1" y="1" width="158" height="158" rx="35" fill="none" stroke="#2DD4BF" stroke-opacity="0.35" stroke-width="2"/>
+    <path d="M44 38 L82 80 L44 122 M116 38 L78 80 L116 122" fill="none" stroke="#2DD4BF" stroke-width="15" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="212" y="118" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="96" font-weight="700" fill="#F3F4F6">Xick</text>
+  <text x="216" y="158" font-family="Segoe UI, Helvetica, Arial, sans-serif" font-size="20" font-weight="600" letter-spacing="4" fill="#8B93A1">UNOFFICIAL KICK CLIENT</text>
+</svg>
