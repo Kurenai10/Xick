@@ -592,8 +592,38 @@ class ChannelFragment : Fragment() {
         exo.setMediaItem(MediaItem.fromUri(url))
         exo.prepare()
         exo.playWhenReady = true
+        exo.addListener(object : androidx.media3.common.Player.Listener {
+            override fun onIsPlayingChanged(isPlaying: Boolean) {
+                if (isPlaying) armScreenTimeout() else releaseScreenTimeout()
+            }
+        })
         binding?.playerView?.player = exo
         player = exo
+    }
+
+    // ---- Screen timeout: keep the screen on while playing, for at most 30 minutes ----
+
+    private val screenTimeoutRunnable = Runnable { setKeepScreenOn(false) }
+
+    /** Keeps the screen awake while playing; after 30 minutes the normal screen timeout applies again. */
+    private fun armScreenTimeout() {
+        setKeepScreenOn(true)
+        handler.removeCallbacks(screenTimeoutRunnable)
+        handler.postDelayed(screenTimeoutRunnable, SCREEN_ON_LIMIT_MS)
+    }
+
+    private fun releaseScreenTimeout() {
+        handler.removeCallbacks(screenTimeoutRunnable)
+        setKeepScreenOn(false)
+    }
+
+    private fun setKeepScreenOn(on: Boolean) {
+        val window = activity?.window ?: return
+        if (on) {
+            window.addFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        } else {
+            window.clearFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+        }
     }
 
     private fun showQualityDialog() {
@@ -688,6 +718,7 @@ class ChannelFragment : Fragment() {
             setBottomNavVisible(true)
         }
         handler.removeCallbacksAndMessages(null)
+        setKeepScreenOn(false)
         followSession?.release()
         followSession = null
         // Give rotation back to the rest of the app once the channel is closed.
@@ -702,6 +733,7 @@ class ChannelFragment : Fragment() {
 
     companion object {
         const val ARG_CHANNEL_SLUG = "channelSlug"
+        private const val SCREEN_ON_LIMIT_MS = 30 * 60_000L
     }
 }
 
