@@ -1,6 +1,8 @@
 <p align="center">
-  <img src="docs/logo.svg" alt="Xick" width="520">
+  <img src="docs/logo.svg" alt="Xick logosu" width="120">
 </p>
+
+<h1 align="center">Xick</h1>
 
 <p align="center">
   <b><a href="https://kick.com">Kick</a> için resmi olmayan, hafif bir Android istemcisi.</b><br>
@@ -25,8 +27,9 @@
 
 <table align="center">
   <tr>
-    <td align="center"><img src="docs/screenshots/popular.png" alt="Popüler kanallar" width="260"><br><sub>Popüler kanallar</sub></td>
-    <td align="center"><img src="docs/screenshots/player.png" alt="Kontrollü canlı oynatıcı" width="390"><br><sub>Canlı oynatıcı ve sohbet</sub></td>
+    <td align="center"><img src="docs/screenshots/takip-list.png" alt="Canlı olan takip edilen kanallar" width="240"><br><sub>Canlı olan takip edilen kanallar</sub></td>
+    <td align="center"><img src="docs/screenshots/player.png" alt="Kontrollü canlı oynatıcı" width="340"><br><sub>Kontrollü canlı oynatıcı</sub></td>
+    <td align="center"><img src="docs/screenshots/popular.png" alt="Popüler kanallar" width="240"><br><sub>Popüler kanallar</sub></td>
   </tr>
 </table>
 

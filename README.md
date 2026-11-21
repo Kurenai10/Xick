@@ -1,6 +1,8 @@
 <p align="center">
-  <img src="docs/logo.svg" alt="Xick" width="520">
+  <img src="docs/logo.svg" alt="Xick logo" width="120">
 </p>
+
+<h1 align="center">Xick</h1>
 
 <p align="center">
   <b>An unofficial, lightweight Android client for <a href="https://kick.com">Kick</a>.</b><br>
@@ -25,8 +27,9 @@
 
 <table align="center">
   <tr>
-    <td align="center"><img src="docs/screenshots/popular.png" alt="Popular channels" width="260"><br><sub>Popular channels</sub></td>
-    <td align="center"><img src="docs/screenshots/player.png" alt="Live player with controls" width="390"><br><sub>Live player and chat</sub></td>
+    <td align="center"><img src="docs/screenshots/takip-list.png" alt="Followed channels that are live" width="240"><br><sub>Followed channels that are live</sub></td>
+    <td align="center"><img src="docs/screenshots/player.png" alt="Live player with controls" width="340"><br><sub>Live player with controls</sub></td>
+    <td align="center"><img src="docs/screenshots/popular.png" alt="Popular channels" width="240"><br><sub>Popular channels</sub></td>
   </tr>
 </table>
 
