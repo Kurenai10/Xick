@@ -14,7 +14,7 @@ import java.net.URLDecoder
  * protection — not something to re-implement as a raw POST); the cookies
  * Android's CookieManager captures are then shared with OkHttp.
  *
- * How "signed in" is detected: LoginFragment watches the page and marks
+ * How "signed in" is detected: the Takip tab watches the page and marks
  * the session once Kick's own login button (`[data-testid="login"]`) is
  * gone — the same thing a person sees. Which cookie carries the session is
  * NOT confirmed (no real login has been captured yet); [sessionToken]
@@ -43,39 +43,12 @@ object AuthManager {
         }
     }
 
-    /**
-     * The saved flag is only a hint. A stale flag from an earlier (wrong) login
-     * must not show "signed in", so the flag is cleared unless the session is
-     * confirmed by the server. Call this at app start (XickApplication).
-     */
-    suspend fun reconcileSession() {
-        val hinted = appContext?.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
-            ?.getBoolean(KEY_SIGNED_IN, false) == true
-        // A stored official token means the user signed in; don't clear the flag at startup.
-        if (hinted && KickOAuth.accessToken() == null && !verifySession()) {
-            appContext?.getSharedPreferences(PREFS, Context.MODE_PRIVATE)?.edit()
-                ?.putBoolean(KEY_SIGNED_IN, false)?.apply()
-        }
-    }
-
     fun isSignedIn(): Boolean =
         appContext?.getSharedPreferences(PREFS, Context.MODE_PRIVATE)?.getBoolean(KEY_SIGNED_IN, false) == true
 
     fun markSignedIn() {
         CookieManager.getInstance().flush()
         appContext?.getSharedPreferences(PREFS, Context.MODE_PRIVATE)?.edit()?.putBoolean(KEY_SIGNED_IN, true)?.apply()
-    }
-
-    /**
-     * Real verification: a signed-in session can read /api/v2/channels/followed
-     * (200); a guest gets 401. Used by the login flow so "signed in" reflects an
-     * actual session, not just the login button disappearing (which also happens
-     * when the user cancels the modal).
-     */
-    suspend fun verifySession(): Boolean = kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
-        runCatching {
-            KickApi.client.newCall(KickApi.followedRequest()).execute().use { it.isSuccessful }
-        }.getOrDefault(false)
     }
 
     fun signOut() {

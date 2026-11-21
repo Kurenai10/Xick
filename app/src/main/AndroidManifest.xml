@@ -26,13 +26,6 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <!-- Kick login returns here via the GitHub Pages bridge: xick://callback?code=... -->
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="xick" android:host="callback" />
-            </intent-filter>
         </activity>
 
         <service

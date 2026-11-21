@@ -283,8 +283,13 @@ class FollowingFragment : Fragment() {
         val wv = capture ?: return
         wv.evaluateJavascript("!!document.getElementById('navbar-account')") { result ->
             if (result == "true") {
-                wv.reload()
-                main.postDelayed(checkSignedIn, 6000L)
+                // Signed in: go back to the following page (not the Kick home page) and hide the sign-in view.
+                main.removeCallbacks(checkSignedIn)
+                wv.layoutParams = android.widget.FrameLayout.LayoutParams(1, 1)
+                wv.alpha = 0f
+                wv.visibility = View.INVISIBLE
+                binding?.messageText?.visibility = View.GONE
+                wv.loadUrl("https://kick.com/following")
             } else {
                 main.postDelayed(checkSignedIn, 3000L)
             }
@@ -305,6 +310,8 @@ class FollowingFragment : Fragment() {
 
     private fun onListCaptured(slugs: List<String>) {
         val ctx = context ?: return
+        // The live-followed list only comes back for a signed-in session, so the account is signed in.
+        AuthManager.markSignedIn()
         slugs.forEach { FollowState.set(ctx, it, true) }
         capture?.let { (it.parent as? ViewGroup)?.removeView(it); it.destroy() }
         capture = null

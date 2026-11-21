@@ -17,12 +17,7 @@ class XickApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         AuthManager.init(this)
-        com.xick.app.util.KickOAuth.init(this)
         AnonId.init(this)
         KickApi.init(this)
-        // Verify any saved "signed in" flag against the server in the background.
-        kotlinx.coroutines.GlobalScope.launch(kotlinx.coroutines.Dispatchers.IO) {
-            AuthManager.reconcileSession()
-        }
     }
 }

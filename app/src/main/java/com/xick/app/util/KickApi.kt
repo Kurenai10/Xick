@@ -195,6 +195,13 @@ object KickApi {
             .header("Accept", "application/json")
             .build()
 
+    /** The signed-in account (needs the session cookie; not signed in is refused). */
+    fun webUserRequest(): Request =
+        Request.Builder()
+            .url("$BASE_URL/api/v1/user")
+            .header("Accept", "application/json")
+            .build()
+
     /** Observed: GET /api/v2/channels/followed -> followed channels (needs the session cookie; 401 otherwise). */
     fun followedRequest(): Request =
         Request.Builder()

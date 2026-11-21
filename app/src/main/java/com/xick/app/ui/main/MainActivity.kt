@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        handleLoginCallback(intent)
 
         // Hide the status/notification icons app-wide: they cover the top of the
         // screen (and the fullscreen controls under them). Swipe from the top
@@ -44,24 +43,6 @@ class MainActivity : AppCompatActivity() {
             if (host.bottomMargin != wanted) {
                 host.bottomMargin = wanted
                 binding.navHostFragment.layoutParams = host
-            }
-        }
-    }
-
-    override fun onNewIntent(intent: android.content.Intent) {
-        super.onNewIntent(intent)
-        handleLoginCallback(intent)
-    }
-
-    /** Kick sends the browser back to xick://callback?code=... after the user signs in. */
-    private fun handleLoginCallback(intent: android.content.Intent?) {
-        val uri = intent?.data ?: return
-        if (uri.scheme != "xick" || uri.host != "callback") return
-        lifecycleScope.launch {
-            val ok = com.xick.app.util.KickOAuth.handleCallback(uri)
-            if (ok) {
-            } else {
-                android.widget.Toast.makeText(this@MainActivity, "Giriş tamamlanamadı, tekrar deneyin", android.widget.Toast.LENGTH_LONG).show()
             }
         }
     }

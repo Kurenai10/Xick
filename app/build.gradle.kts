@@ -9,7 +9,6 @@ plugins {
     alias(libs.plugins.navigation.safeargs)
 }
 
-// Kick OAuth client secret lives in the local (git-ignored) local.properties, never in code.
 val localProps = Properties().apply {
     val f = rootProject.file("local.properties")
     if (f.exists()) f.inputStream().use { load(it) }
@@ -25,7 +24,6 @@ android {
         targetSdk = 35
         versionCode = 1
         versionName = "0.1.0"
-        buildConfigField("String", "KICK_CLIENT_SECRET", "\"${localProps.getProperty("kick.clientSecret", "")}\"")
     }
 
     buildTypes {

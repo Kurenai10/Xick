@@ -176,11 +176,10 @@ class ChannelFragment : Fragment() {
         b.messageInput.setOnEditorActionListener { _, id, _ ->
             if (id == EditorInfo.IME_ACTION_SEND) { sendCurrentMessage(); true } else false
         }
-        // When not signed in, tapping the input sends the user to login instead
-        // of opening a keyboard they can't use (chat send needs a session).
+        // Chat send needs a Kick session; sign-in lives in the Takip tab.
         b.messageInput.setOnClickListener {
             if (!AuthManager.isSignedIn()) {
-                findNavController().navigate(R.id.action_global_login)
+                Toast.makeText(requireContext(), "Sohbete yazmak için Takip sekmesinden Kick'e giriş yap", Toast.LENGTH_LONG).show()
             }
         }
 

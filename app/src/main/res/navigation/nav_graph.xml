@@ -74,31 +74,14 @@
         android:name="com.xick.app.ui.vod.VodPlayerFragment"
         android:label="@string/vod" />
 
-    <!-- Global actions so any screen (browse cards, search) can open a profile/login. -->
+    <!-- Global action so any screen (browse cards, search) can open a channel profile. -->
     <action
         android:id="@+id/action_global_channelProfile"
         app:destination="@id/channelProfileFragment" />
-    <action
-        android:id="@+id/action_global_login"
-        app:destination="@id/loginFragment" />
 
     <fragment
         android:id="@+id/followingFragment"
         android:name="com.xick.app.ui.following.FollowingFragment"
-        android:label="@string/nav_following">
-        <action
-            android:id="@+id/action_following_to_login"
-            app:destination="@id/loginFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/savedFragment"
-        android:name="com.xick.app.ui.profile.ProfileFragment"
-        android:label="@string/nav_saved" />
-
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.xick.app.ui.login.LoginFragment"
-        android:label="@string/sign_in" />
+        android:label="@string/nav_following" />
 
 </navigation>
